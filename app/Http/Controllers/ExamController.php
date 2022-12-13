@@ -20,20 +20,23 @@ class ExamController extends Controller
         $request->validate([
             'exam_name' => 'required',
             'subject_id' => 'required',
-            'exam_date' => 'required'
+            'exam_date' => 'required',
+            'exam_time' => 'required'
 
         ]);
         $data = $request->all();
         Exam::create([
             'exam_name' => $data['exam_name'],
             'subject_id' => $data['subject_id'],
-            'exam_date' => $data['exam_date']
+            'exam_date' => $data['exam_date'],
+            'exam_time' => $data['exam_time']
+            
         ]);
         if ($request == '') {
             return back()->with('error', 'Somthing went wrong!!.');
         } else {
 
-            return back()->with('success', 'Subject information Submited Successfully.');
+            return back()->with('success', 'Exam information Submited Successfully.');
         }
     }
 }

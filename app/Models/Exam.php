@@ -11,5 +11,5 @@ class Exam extends Model
   
     protected $table = 'exams';
     protected $primarykey = 'id';
-    protected $fillable = ["exam_name"];
+    protected $fillable = ["exam_name","subject_id","exam_date","exam_time"];
 }

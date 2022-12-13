@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Exam Information</h5>
                     @if(Session::has('success'))
-                    <div style="color:green" class="alert alert-success">{{Session::get('success')}}</div>
+                    <div style="color:green;font-size:bold" class="alert alert-success">{{Session::get('success')}}</div>
                     @endif
                     <form action="{{ url('/Addexam') }}" method="POST">
                         @csrf
@@ -49,9 +49,18 @@
                         </div>
                         <div class="form-group">
                             <label for="staticEmail2" class="">Exam Date</label>
-                            <input type="date" class="form-control" name="exam_date" placeholder="Enter Subject">
+                            <input type="date" class="form-control" name="exam_date" min="@php echo date('Y-m-d');@endphp">
                             <span class="text-danger  text-center">
                                 @error('exam_date')
+                                {{$message}}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="staticEmail2" class="">Exam Time</label>
+                            <input type="time" class="form-control" name="exam_time" placeholder="Enter Subject">
+                            <span class="text-danger  text-center">
+                                @error('exam_time')
                                 {{$message}}
                                 @enderror
                             </span>
