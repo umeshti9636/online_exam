@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnsUpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,11 @@ Route::group(['middleware'=>['web', 'checkAdmin']],function(){
     Route::post('/Addsubject', [SubjectController::class, 'Addsubject']);
     Route::get('/admin/exam', [ExamController::class, 'Exam']);
     Route::post('/Addexam', [ExamController::class, 'Addexam']);
+    Route::get('/admin/exam_details', [ExamController::class, 'exam_details']);
+    Route::get('/admin/question', [QuestionController::class, 'Question']);
+    Route::post('/Addquestion', [QuestionController::class, 'Addquestion']);
+    Route::get('AnswerUpdate/{id}',[AnsUpdateController::class, 'AnswerUpdate']);
+    Route::post('/Addans/{id}', [AnsUpdateController::class, 'Addans']);
     
 });
 Route::group(['middleware' => ['web', 'checkStudent']], function () {
